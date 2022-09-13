@@ -36,7 +36,7 @@ const albumSlice = createSlice({
   },
 });
 
-export const artistActions = albumSlice.actions;
+export const albumActions = albumSlice.actions;
 
 export const selectAlbumLoading = (state: RootState) => state.album.loading;
 export const selectAlbums = (state: RootState) => state.album.albums;
