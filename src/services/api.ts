@@ -6,6 +6,7 @@ import {
   RegisterPayload,
   RegisterResponse,
   Artist,
+  Album,
 } from '../types';
 
 const api = axios.create({
@@ -34,3 +35,6 @@ export const register = (payload: RegisterPayload) =>
   );
 
 export const getArtists = () => api.get<Artist[]>('/artists/');
+
+export const getAlbums = (artist_id: number | string) =>
+  api.get<Album[]>(`/albums?artist_id=${artist_id}`);

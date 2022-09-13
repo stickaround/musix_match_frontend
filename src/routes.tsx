@@ -6,6 +6,7 @@ import { Home } from './pages/home';
 import { Login } from './pages/auth/login';
 import { Register } from './pages/auth/register';
 import { Artist } from './pages/artist';
+import { Album } from './pages/album';
 
 function PostRoutes() {
   return (
@@ -16,6 +17,7 @@ function PostRoutes() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/artists' element={<Artist />} />
+          <Route path='/albums' element={<Album />} />
         </Routes>
         <ToastContainer position='top-right' delay={2000} />
       </Layout>
