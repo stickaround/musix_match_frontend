@@ -5,6 +5,7 @@ import { Layout } from './core/components/Layout';
 import { Home } from './pages/home';
 import { Login } from './pages/auth/login';
 import { Register } from './pages/auth/register';
+import { Artist } from './pages/artist';
 
 function PostRoutes() {
   return (
@@ -14,6 +15,7 @@ function PostRoutes() {
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/artists' element={<Artist />} />
         </Routes>
         <ToastContainer position='top-right' delay={2000} />
       </Layout>

@@ -4,7 +4,7 @@ import { toast } from 'react-toast';
 import { login, register } from '../../services/api';
 import { RootState } from '../../store';
 import { LoginPayload, RegisterPayload } from '../../types';
-import { AuthState } from './types';
+import { AuthState } from '../../types';
 import { MSGs } from '../../constants';
 
 const initialState: AuthState = {
@@ -44,10 +44,11 @@ const authSlice = createSlice({
       .addCase(loginAsync.fulfilled, (state, action) => {
         state.loading = false;
         state.me = {
-          _id: action.payload.user?._id ?? '',
-          username: action.payload.user?.username ?? '',
-          country: action.payload.user?.country ?? '',
+          _id: action.payload.user._id,
+          username: action.payload.user.username,
+          country: action.payload.user?.country,
         };
+        window.localStorage.setItem('token', action.payload.token);
         toast.success(MSGs.LOGIN_SUCCESS);
       })
       .addCase(loginAsync.rejected, (state, action) => {
@@ -61,9 +62,9 @@ const authSlice = createSlice({
       .addCase(registerAsync.fulfilled, (state, action) => {
         state.loading = false;
         state.me = {
-          _id: action.payload?.user?._id ?? '',
-          username: action.payload?.user?.username ?? '',
-          country: action.payload?.user?.country ?? '',
+          _id: action.payload.user._id ?? '',
+          username: action.payload.user.username ?? '',
+          country: action.payload.user.country ?? '',
         };
         toast.success(MSGs.REGISTER_SUCCESS);
       })
