@@ -76,3 +76,22 @@ export type AlbumState = {
   albums: Album[];
   loading: boolean;
 };
+
+export type Track = {
+  track: {
+    track_id: number;
+    track_name: string;
+    track_rating: number;
+    album_id: number;
+    album_name: string;
+    artist_id: number;
+    artist_name: string;
+    restricted: number;
+    updated_time: Date;
+  };
+};
+
+export type TrackState = {
+  tracks: Track[];
+  loading: boolean;
+};

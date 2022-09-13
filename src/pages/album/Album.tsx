@@ -11,7 +11,6 @@ function Album() {
   const albums = useAppSelector(selectAlbums);
   const search = useLocation().search;
 
-  console.error({ albums });
   React.useEffect(() => {
     const artist_id = new URLSearchParams(search).get('artist_id');
     dispatch(getAlbumsAsync(artist_id ?? ''));
