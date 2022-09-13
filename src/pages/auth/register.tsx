@@ -29,7 +29,9 @@ function Register() {
       password: Yup.string().required('Input password!'),
     }),
     onSubmit: (values) => {
-      dispatch(registerAsync({ ...values, country: 'au' }));
+      dispatch(registerAsync({ ...values, country: 'au' })).then(() => {
+        navigate('/artists');
+      });
     },
   });
   return (

@@ -11,7 +11,7 @@ function Artist() {
 
   React.useEffect(() => {
     dispatch(getArtistsAsync());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Container sx={{ mt: '40px' }}>

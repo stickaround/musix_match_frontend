@@ -42,19 +42,37 @@ export type Artist = {
     artist_alias_list: string[];
     artist_rating: number;
     artist_twitter_url: string;
-    artist_credits: {
-      artist_list: Artist[];
-    };
     restricted: number;
     updated_time: Date;
     begin_year_date: string;
     begin_date: string;
-    end_year_date: string;
     end_date: string;
   };
 };
 
 export type ArtistState = {
   artists: Artist[];
+  loading: boolean;
+};
+
+export type Album = {
+  album: {
+    album_id: number;
+    album_mid: string;
+    album_name: string;
+    album_rating: number;
+    album_release_date: Date;
+    artist_id: number;
+    artist_name: string;
+    album_pline: string;
+    album_copyright: string;
+    album_label: string;
+    restricted: number;
+    updated_time: Date;
+  };
+};
+
+export type AlbumState = {
+  albums: Album[];
   loading: boolean;
 };
