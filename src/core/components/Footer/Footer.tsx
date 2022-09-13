@@ -25,7 +25,6 @@ function Footer() {
           showLabels
         >
           <Typography
-            variant='h2'
             sx={{ display: 'flex', alignItems: 'center', color: 'white' }}
           >
             Benjamin Masor, 2022
