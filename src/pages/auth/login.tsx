@@ -29,9 +29,11 @@ function Login() {
       password: Yup.string().required('Input password!'),
     }),
     onSubmit: (values) => {
-      dispatch(loginAsync(values)).then(() => {
-        navigate('/artists');
-      });
+      dispatch(loginAsync(values))
+        .unwrap()
+        .then(() => {
+          navigate('/artists');
+        });
     },
   });
   return (

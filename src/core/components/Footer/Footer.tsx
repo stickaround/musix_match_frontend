@@ -1,10 +1,4 @@
-import {
-  Box,
-  CssBaseline,
-  BottomNavigation,
-  Paper,
-  Typography,
-} from '@mui/material';
+import { Box, CssBaseline, Paper, Typography } from '@mui/material';
 
 function Footer() {
   return (
@@ -16,20 +10,16 @@ function Footer() {
           bottom: 0,
           left: 0,
           right: 0,
+          backgroundColor: '#1976d2',
+          height: '60px',
         }}
         elevation={3}
       >
-        <BottomNavigation
-          value={0}
-          sx={{ backgroundColor: '#1976d2' }}
-          showLabels
+        <Typography
+          sx={{ textAlign: 'center', color: 'white', marginTop: '15px' }}
         >
-          <Typography
-            sx={{ display: 'flex', alignItems: 'center', color: 'white' }}
-          >
-            Benjamin Masor, 2022
-          </Typography>
-        </BottomNavigation>
+          Benjamin Masor, 2022
+        </Typography>
       </Paper>
     </Box>
   );

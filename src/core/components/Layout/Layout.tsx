@@ -4,18 +4,12 @@ import { styled, Box } from '@mui/material';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 
-function Layout({
-  children,
-  mode,
-}: {
-  children: React.ReactNode;
-  mode: string;
-}) {
+function Layout({ children }: { children: React.ReactNode }) {
   return (
     <LayoutWrapper>
       <ContentWrapper>
         <Box component='header'>
-          <Header mode={mode} />
+          <Header />
         </Box>
         <Box component='main' sx={{ flexGrow: 1 }}>
           <DrawerHeader />
