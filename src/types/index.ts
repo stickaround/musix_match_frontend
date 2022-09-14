@@ -5,7 +5,7 @@ export type User = {
 };
 
 export type AuthState = {
-  me: User | null;
+  currentUser: User | null;
   loading: boolean;
 };
 

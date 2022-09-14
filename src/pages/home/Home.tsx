@@ -1,7 +1,14 @@
+import { Typography } from '@mui/material';
+
 function Home() {
   return (
     <div className='App'>
-      <h1>Welcome to our site!</h1>
+      <Typography
+        variant='h2'
+        sx={{ textAlign: 'center', color: 'text.secondary', mt: '50px' }}
+      >
+        Welcome to Musix Match API consuming site!
+      </Typography>
     </div>
   );
 }

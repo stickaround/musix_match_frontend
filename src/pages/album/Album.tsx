@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { useLocation } from 'react-router-dom';
-import { Container, Grid, Box } from '@mui/material';
+import { Container, Grid, Box, CircularProgress } from '@mui/material';
 
 import { AlbumCard } from './AlbumCard';
-import { getAlbumsAsync, selectAlbums } from './albumSlice';
+import { getAlbumsAsync, selectAlbums, selectAlbumLoading } from './albumSlice';
 import { useAppDispatch, useAppSelector } from '../../store/hook';
 
 function Album() {
   const dispatch = useAppDispatch();
   const albums = useAppSelector(selectAlbums);
+  const loading = useAppSelector(selectAlbumLoading);
   const search = useLocation().search;
 
   React.useEffect(() => {
@@ -16,7 +17,18 @@ function Album() {
     dispatch(getAlbumsAsync(artist_id ?? ''));
   }, [dispatch, search]);
 
-  return (
+  return loading ? (
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '90vh',
+      }}
+    >
+      <CircularProgress />
+    </Box>
+  ) : (
     <Container sx={{ mt: '40px' }}>
       <h2>
         Latest 3 albums of {albums.length ? albums[0].album.artist_name : ''}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
@@ -17,7 +17,10 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
-const guestItems = [
+import { useAppSelector, useAppDispatch } from '../../../store/hook';
+import { selectCurrentUser, authActions } from '../../../pages/auth/authSlice';
+
+const guestMenu = [
   {
     label: 'Login',
     path: 'login',
@@ -28,19 +31,21 @@ const guestItems = [
   },
 ];
 
-const userItems = [
+const userMenu = [
   {
-    label: 'Post',
-    path: 'posts',
+    label: 'Artists',
+    path: 'artists',
   },
 ];
 
-function Header({ mode }: { mode: string }) {
+function Header() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const currentUser = useAppSelector(selectCurrentUser);
 
-  const navItems = mode === 'guest' ? [...guestItems] : [...userItems];
+  const navItems = !currentUser ? [...guestMenu] : [...userMenu];
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -56,6 +61,7 @@ function Header({ mode }: { mode: string }) {
 
   const handleLogout = () => {
     localStorage.setItem('token', '');
+    dispatch(authActions.logout());
     setAnchorEl(null);
     navigate('/login');
   };
@@ -116,7 +122,7 @@ function Header({ mode }: { mode: string }) {
                 </Button>
               </Link>
             ))}
-            {(mode === 'user' || mode === 'admin') && (
+            {currentUser && (
               <div>
                 <IconButton
                   size='large'

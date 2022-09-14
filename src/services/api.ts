@@ -1,6 +1,7 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 
 import {
+  User,
   LoginPayload,
   LoginResponse,
   RegisterPayload,
@@ -34,6 +35,8 @@ export const register = (payload: RegisterPayload) =>
     '/auth/register',
     payload
   );
+
+export const getCurrentUser = () => api.get<User>('auth/current_user');
 
 export const getArtists = () => api.get<Artist[]>('/artists/');
 
